@@ -1,13 +1,4 @@
-//--------------------------------------------------------------------------------
-//Version:     1
-//--------------------------------------------------------------------------------
-//Writer:      Luke
-//----------------------------------------------
-//Date:        
-//----------------------------------------------
-//Description: 
-//--------------------------------------------------------------------------------
-     
+
 module MUX_2to1(
                data0_i,
                data1_i,
@@ -24,9 +15,10 @@ input              select_i;
 output  [size-1:0] data_o; 
 
 //Internal Signals
-reg     [size-1:0] data_o;
-
+wire     [size-1:0] data_o;  //Register is illegal in left-hand side of continuous assignment
+//about continuous assignment, see: http://web.mit.edu/6.111/www/f2017/handouts/L03_4.pdf for more details
 //Main function
+assign data_o= (select_i)?data1_i:data0_i;
 
 endmodule      
           
